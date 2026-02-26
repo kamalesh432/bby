@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   CSS VARIABLES & RESET
+   ============================================ */
+:root {
+  --pink: #f4a7b9;
+  --deep-pink: #e05c7f;
+  --rose: #c0395c;
+  --lavender: #d8b4e2;
+  --blush: #fce4ec;
+  --cream: #fff8f9;
+  --warm-white: #fffafc;
+  --text-dark: #3a1a2a;
+  --text-mid: #6b3a4e;
+  --gold: #d4a853;
+  --shadow: rgba(224, 92, 127, 0.3);
+}
+
+*, *::before, *::after { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* Custom Cursor */
+.cursor {
+  width: 20px; 
+  height: 20px;
+  background: var(--deep-pink);
+  border-radius: 50%;
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+  mix-blend-mode: multiply;
+}
+
+/* Page Management */
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 30%, #fce4ec 60%, #fff0f3 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Floating Hearts Background */
+.hearts-bg {
+  position: absolute; 
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart-float {
+  position: absolute;
+  animation: floatUp linear infinite;
+  opacity: 0;
+  font-size: 1.5rem;
+}
+
+@keyframes floatUp {
+  0% { 
+    transform: translateY(110vh) rotate(0deg); 
+    opacity: 0; 
+  }
+  10% { 
+    opacity: 0.6; 
+  }
+  90% { 
+    opacity: 0.4; 
+  }
+  100% { 
+    transform: translateY(-10vh) rotate(360deg); 
+    opacity: 0; 
+  }
+}
+
+.hero-content { 
+  position: relative; 
+  z-index: 2; 
+}
+
+.hero-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: var(--text-mid);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 0.5s forwards;
+}
+
+.hero-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(3rem, 10vw, 7rem);
+  color: var(--rose);
+  line-height: 1.1;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 1s forwards;
+  text-shadow: 0 4px 30px rgba(192, 57, 92, 0.25);
+}
+
+.hero-heart {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  display: block;
+  margin-top: 0.5rem;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { 
+    transform: scale(1); 
+  }
+  50% { 
+    transform: scale(1.15); 
+  }
+}
+
+@keyframes fadeSlideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.begin-btn {
+  margin-top: 3rem;
+  padding: 1rem 2.8rem;
+  background: linear-gradient(135deg, var(--deep-pink), var(--rose));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeSlideUp 1s ease 1.8s forwards, glowPulse 2s ease-in-out 2.8s infinite;
+  box-shadow: 0 8px 30px var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 2;
+}
+
+.begin-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 15px 40px var(--shadow);
+}
+
+@keyframes glowPulse {
+  0%, 100% { 
+    box-shadow: 0 8px 30px var(--shadow); 
+  }
+  50% { 
+    box-shadow: 0 8px 50px rgba(192, 57, 92, 0.6), 0 0 60px rgba(224, 92, 127, 0.3); 
+  }
+}
+
+.petal {
+  position: absolute;
+  width: 60px; 
+  height: 60px;
+  background: radial-gradient(circle at 30% 30%, rgba(244, 167, 185, 0.4), transparent);
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+  animation: petalDrift linear infinite;
+}
+
+@keyframes petalDrift {
+  0% { 
+    transform: translateY(-50px) rotate(0deg) translateX(0); 
+    opacity: 0; 
+  }
+  10% { 
+    opacity: 0.7; 
+  }
+  100% { 
+    transform: translateY(110vh) rotate(720deg) translateX(80px); 
+    opacity: 0; 
+  }
+}
+
+/* ============================================
+   SECTION SHARED STYLES
+   ============================================ */
+section { 
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 5vw, 4rem); 
+}
+
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--deep-pink);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--rose);
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+
+/* ============================================
+   QUOTES CAROUSEL
+   ============================================ */
+#quotes {
+  background: linear-gradient(160deg, #fff0f5 0%, #f3e5f5 100%);
+  text-align: center;
+}
+
+.carousel-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.quote-slide {
+  display: none;
+  animation: quoteFade 0.8s ease;
+}
+
+.quote-slide.active { 
+  display: block; 
+}
+
+@keyframes quoteFade {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.97); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.quote-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-style: italic;
+  color: var(--text-dark);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  padding: 0 1rem;
+}
+
+.quote-text::before { 
+  content: '\201C'; 
+  color: var(--pink); 
+  font-size: 1.5em; 
+  line-height: 0; 
+  vertical-align: -0.4em; 
+}
+
+.quote-text::after  { 
+  content: '\201D'; 
+  color: var(--pink); 
+  font-size: 1.5em; 
+  line-height: 0; 
+  vertical-align: -0.4em; 
+}
+
+.quote-author {
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--text-mid);
+  text-transform: uppercase;
+}
+
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.carousel-btn {
+  width: 48px; 
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--pink);
+  background: white;
+  color: var(--deep-pink);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+
+.carousel-btn:hover { 
+  background: var(--deep-pink); 
+  color: white; 
+  border-color: var(--deep-pink); 
+}
+
+.carousel-dots { 
+  display: flex; 
+  gap: 8px; 
+}
+
+.dot {
+  width: 8px; 
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active { 
+  background: var(--rose); 
+  width: 28px; 
+  border-radius: 4px; 
+}
+
+/* ============================================
+   YES / NO SECTION
+   ============================================ */
+#yesno {
+  background: linear-gradient(135deg, #f3e5f5 0%, #fff0f5 100%);
+  text-align: center;
+}
+
+.yesno-question {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--rose);
+  margin-bottom: 2rem;
+  line-height: 1.3;
+}
+
+.yesno-buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 100;
+}
+
+.yesno-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  font-family: 'Raleway', sans-serif;
+}
+
+#yes-btn {
+  background: var(--deep-pink);
+  color: white;
+}
+
+#yes-btn:hover { 
+  transform: scale(1.08);
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+#no-btn {
+  background: white;
+  color: var(--rose);
+  border: 2px solid var(--rose);
+  position: relative;
+}
+
+#no-btn:hover { 
+  border-color: var(--deep-pink);
+  color: var(--deep-pink);
+}
+
+/* ============================================
+   YES POPUP
+   ============================================ */
+#yes-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#yes-popup.show {
+  display: flex;
+  animation: popupFadeIn 0.4s ease;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  animation: popupSlideUp 0.5s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes popupSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.popup-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: var(--rose);
+  margin-bottom: 1rem;
+}
+
+.popup-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.popup-btn {
+  background: var(--deep-pink);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.popup-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+/* ============================================
+   LOVE LETTER SECTION
+   ============================================ */
+#letter {
+  background: linear-gradient(135deg, #fff0f5 0%, #f3e5f5 100%);
+  text-align: center;
+}
+
+.letter-box {
+  max-width: 700px;
+  margin: 0 auto;
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+}
+
+#letter-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  line-height: 1.8;
+  text-align: left;
+  margin-bottom: 2rem;
+  min-height: 200px;
+}
+
+#typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2rem;
+  background: var(--deep-pink);
+  margin-left: 4px;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+#letter-sign {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2rem;
+  color: var(--rose);
+  text-align: right;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* ============================================
+   ENVELOPE SECTION
+   ============================================ */
+#envelope-section {
+  background: linear-gradient(160deg, #fff0f5 0%, #f3e5f5 100%);
+  text-align: center;
+  position: relative;
+}
+
+.envelope-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  perspective: 1000px;
+  min-height: 400px;
+}
+
+.envelope {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.envelope.open {
+  animation: envelopeOpen 0.8s ease forwards;
+}
+
+@keyframes envelopeOpen {
+  0% {
+    transform: rotateX(0deg) scale(1);
+  }
+  50% {
+    transform: rotateX(15deg) scale(1.05);
+  }
+  100% {
+    transform: rotateX(100deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.envelope-front {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(224, 92, 127, 0.4);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.envelope:hover .envelope-front {
+  box-shadow: 0 30px 80px rgba(224, 92, 127, 0.5);
+  transform: translateY(-5px);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 100px solid var(--deep-pink);
+  transition: border-top-color 0.3s ease;
+}
+
+.envelope:hover .envelope-flap {
+  border-top-color: var(--rose);
+}
+
+.envelope-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.envelope-decoration {
+  font-size: 3rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* Letter Popup Styles */
+.letter-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  pointer-events: none;
+}
+
+.letter-popup.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.letter-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.letter-content {
+  position: relative;
+  z-index: 10;
+  background: linear-gradient(135deg, #fff8f9 0%, #fffafc 100%);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 40px 100px rgba(224, 92, 127, 0.3);
+  animation: letterPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  border: 2px solid var(--pink);
+}
+
+@keyframes letterPop {
+  0% {
+    transform: scale(0.3) translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-letter {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--deep-pink);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+
+.close-letter:hover {
+  background: var(--rose);
+  transform: rotate(90deg);
+}
+
+.letter-inner {
+  text-align: left;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.letter-greeting {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--rose);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.letter-body {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.letter-closing {
+  font-size: 1rem;
+  color: var(--deep-pink);
+  margin-top: 2rem;
+  font-style: italic;
+  line-height: 1.8;
+}
+
+/* ============================================
+   FINALE SECTION
+   ============================================ */
+#finale {
+  background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #fff0f5 100%);
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#finale-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  color: var(--rose);
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(30px) scale(0.8);
+  transition: all 1s ease 0.5s;
+}
+
+#finale-title.reveal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#finale-msg {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: var(--text-dark);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease 0.8s;
+}
+
+#finale-msg.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.surprise-btn {
+  background: linear-gradient(135deg, var(--deep-pink), var(--rose));
+  color: white;
+  border: none;
+  padding: 1.2rem 3rem;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.surprise-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px var(--shadow);
+}
+
+.surprise-btn:active {
+  transform: translateY(-1px);
+}
+
+.exp-heart {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  z-index: 500;
+}
+
+@keyframes heartExplosion {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx), var(--ty)) scale(0);
+  }
+}
+
+.exp-heart {
+  animation: heartExplosion 1.5s ease-out forwards;
+}
+
+#heart-explosion {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 500;
+}
+
+.confetti-piece {
+  position: fixed;
+  pointer-events: none;
+  z-index: 400;
+  animation: confettiFall 4s ease-in forwards;
+}
+
+@keyframes confettiFall {
+  0% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+.finale-heart {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: finalHeartFloat 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes finalHeartFloat {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateY(-50px);
+  }
+}
+
+/* ============================================
+   VIDEO SURPRISE PAGE
+   ============================================ */
+.video-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 30%, #fce4ec 60%, #fff0f3 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.video-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--rose);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: slideInDown 1s ease 0.3s forwards;
+  text-shadow: 0 4px 30px rgba(192, 57, 92, 0.25);
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--text-mid);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: slideInUp 1s ease 0.6s forwards;
+  line-height: 1.6;
+}
+
+.video-player-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px var(--shadow);
+  background: black;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideInUp 1s ease 0.9s forwards;
+}
+
+.video-player-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 20px;
+}
+
+.video-player-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.video-instructions {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideInUp 1s ease 1.2s forwards;
+}
+
+.instruction-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: var(--rose);
+  margin-bottom: 1rem;
+}
+
+.instruction-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.instruction-code {
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: var(--rose);
+  text-align: left;
+  word-break: break-all;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--deep-pink);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: slideInUp 1s ease 1.5s forwards;
+}
+
+.action-btn {
+  background: linear-gradient(135deg, var(--deep-pink), var(--rose));
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 10px 30px var(--shadow);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.action-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 15px 40px var(--shadow);
+}
+
+.action-btn:active {
+  transform: translateY(-1px);
+}
+
+.action-btn.secondary {
+  background: white;
+  color: var(--rose);
+  border: 2px solid var(--rose);
+}
+
+.action-btn.secondary:hover {
+  background: var(--blush);
+  border-color: var(--deep-pink);
+}
+
+/* ============================================
+   MUSIC PLAYER
+   ============================================ */
+.music-player {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px var(--shadow);
+  transition: all 0.3s;
+  z-index: 998;
+}
+
+.music-player:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px var(--shadow);
+}
+
+.music-player.playing::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid var(--deep-pink);
+  border-radius: 50%;
+  animation: musicPulse 1.5s ease-out infinite;
+}
+
+@keyframes musicPulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 600px) {
+  .yesno-buttons {
+    gap: 1rem;
+  }
+
+  .carousel-controls {
+    gap: 1rem;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .popup-content {
+    padding: 1.5rem;
+  }
+
+  .letter-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .countdown-grid {
+    gap: 1rem;
+  }
+
+  .countdown-box {
+    padding: 1rem;
+  }
+
+  .countdown-number {
+    font-size: 2rem;
+  }
+
+  .music-player {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .video-container {
+    padding: 1rem;
+  }
+
+  .video-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+
+  .video-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .video-instructions {
+    padding: 1.5rem 1rem;
+  }
+
+  .instruction-title {
+    font-size: 1.5rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor" id="cursor"></div>
+
+<!-- ============================================
+     MAIN CELEBRATION PAGE
+     ============================================ -->
+<div id="celebrationPage" class="page active">
+  
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="hearts-bg" id="hearts-bg"></div>
+    <div class="hero-content">
+      <p class="hero-subtitle">Special Day, Special You</p>
+      <h1 class="hero-title">Happy Birthday <span class="hero-heart">❤️</span></h1>
+      <button class="begin-btn" onclick="scrollToQuotes()">Begin the Celebration</button>
+    </div>
+  </section>
+
+  <!-- QUOTES CAROUSEL SECTION -->
+  <section id="quotes">
+    <span class="section-label">Words for You</span>
+    <h2 class="section-title">Beautiful Thoughts</h2>
+    
+    <div class="carousel-wrapper">
+      <div class="quote-slide active">
+        <p class="quote-text">In all the world, there is no heart for me like yours.</p>
+        <p class="quote-author">— Maya Angelou</p>
+      </div>
+      <div class="quote-slide">
+        <p class="quote-text">You are my today and all of my tomorrows.</p>
+        <p class="quote-author">— Leo Christopher</p>
+      </div>
+      <div class="quote-slide">
+        <p class="quote-text">Every moment with you is a gift I never want to end.</p>
+        <p class="quote-author">— Anonymous</p>
+      </div>
+      <div class="quote-slide">
+        <p class="quote-text">You make my heart skip a beat every single day.</p>
+        <p class="quote-author">— Anonymous</p>
+      </div>
+      <div class="quote-slide">
+        <p class="quote-text">I love you more than words could ever express.</p>
+        <p class="quote-author">— Anonymous</p>
+      </div>
+      <div class="quote-slide">
+        <p class="quote-text">You are my greatest adventure and my safest place.</p>
+        <p class="quote-author">— Anonymous</p>
+      </div>
+      <div class="quote-slide">
+        <p class="quote-text">With you, I found my forever.</p>
+        <p class="quote-author">— Anonymous</p>
+      </div>
+      <div class="quote-slide">
+        <p class="quote-text">You are the reason I smile every day.</p>
+        <p class="quote-author">— Anonymous</p>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" id="prev-btn">❮</button>
+        <div class="carousel-dots" id="dots"></div>
+        <button class="carousel-btn" id="next-btn">❯</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- YES / NO INTERACTIVE SECTION -->
+  <section id="yesno">
+    <span class="section-label">The Big Question</span>
+    <h2 class="yesno-question">Will you be mine forever? 💕</h2>
+    
+    <div class="yesno-buttons">
+      <button class="yesno-btn" id="yes-btn" onclick="handleYes()">YES ❤️</button>
+      <button class="yesno-btn" id="no-btn" onmouseover="moveNoBtn()">NO</button>
+    </div>
+  </section>
+
+  <!-- YES POPUP -->
+  <div id="yes-popup">
+    <div class="popup-content">
+      <h2 class="popup-title">I Love You So Much! 💕</h2>
+      <p class="popup-text">You just made me the happiest person alive! I can't wait to spend forever with you.</p>
+      <button class="popup-btn" onclick="closeYesPopup()">Continue</button>
+    </div>
+  </div>
+
+  <!-- LOVE LETTER SECTION -->
+  <section id="letter">
+    <span class="section-label">A Letter for You</span>
+    <h2 class="section-title">From My Heart</h2>
+    
+    <div class="letter-box">
+      <div id="letter-text"></div><span id="typing-cursor"></span>
+      <div id="letter-sign">With All My Love 💕</div>
+    </div>
+  </section>
+
+  <!-- ENVELOPE SECTION -->
+  <section id="envelope-section">
+    <span class="section-label">A Special Message</span>
+    <h2 class="section-title">Open This For You</h2>
+    
+    <div class="envelope-container">
+      <div class="envelope" id="envelope">
+        <div class="envelope-front">
+          <div class="envelope-flap"></div>
+          <div class="envelope-body">
+            <div class="envelope-decoration">💕</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-popup" id="letterPopup">
+      <div class="letter-backdrop" onclick="closeLetter()"></div>
+      <div class="letter-content">
+        <button class="close-letter" onclick="closeLetter()">✕</button>
+        <div class="letter-inner">
+          <p class="letter-greeting">Dear Love,</p>
+          <p class="letter-body">I wanted to take a moment to tell you how incredibly special you are to me. On this beautiful day celebrating your existence, I wish I could find the words to express just how much you mean to me.</p>
+          <p class="letter-body">You bring so much joy, light, and unconditional love into my life. Every moment with you is precious and I treasure them all.</p>
+          <p class="letter-closing">Forever yours,<br>With all my love ❤️</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINALE SECTION -->
+  <section id="finale">
+    <div id="heart-explosion"></div>
+    
+    <h2 id="finale-title">One Last Thing...</h2>
+    <p id="finale-msg">You are the most wonderful person in my life. Thank you for all the love, laughter, and beautiful memories. Here's to celebrating YOU today and forever.</p>
+    <button class="surprise-btn" onclick="goToSurprise()">🎁 Open Your Surprise 🎁</button>
+  </section>
+
+</div>
+
+<!-- ============================================
+     VIDEO SURPRISE PAGE
+     ============================================ -->
+<div id="videoPage" class="page">
+  
+  <div class="video-container">
+    <div class="hearts-bg" id="hearts-bg-video"></div>
+    
+    <div class="content-wrapper">
+      <h1 class="video-title">Your Special Surprise 🎥</h1>
+      <p class="video-subtitle">I've prepared something special for you on your birthday. Watch this video and let your heart feel everything I wanted to say...</p>
+
+      <!-- ============================================
+           VIDEO PLAYER SECTION
+           
+           INSTRUCTION: Choose ONE method below and replace the placeholder:
+           
+           METHOD 1: LOCAL VIDEO FILE (Easiest)
+           - Save your video as MP4 format
+           - Place video file in same folder as HTML
+           - Replace "YOUR_VIDEO.mp4" with actual filename
+           Example: <source src="birthday-video.mp4" type="video/mp4">
+           
+           METHOD 2: YOUTUBE VIDEO
+           - Find video ID in YouTube URL (after v=)
+           - Replace "YOUR_VIDEO_ID" with actual ID
+           - Uncomment the iframe code
+           Example: https://www.youtube.com/embed/dQw4w9WgXcQ
+           
+           METHOD 3: VIDEO URL
+           - Get direct URL to video file
+           - Replace "YOUR_VIDEO_URL" with actual URL
+           - Uncomment the video code
+           ============================================ -->
+      
+      <!-- METHOD 1: LOCAL VIDEO FILE (Currently Active) -->
+      <div class="video-player-wrapper">
+        <video controls>
+          <source src="YOUR_VIDEO.mp4" type="video/mp4">
+          Your browser does not support the video tag. Please use a modern browser.
+        </video>
+      </div>
+
+      <!-- METHOD 2: YOUTUBE VIDEO (UNCOMMENT TO USE)
+      <div class="video-player-wrapper">
+        <iframe 
+          src="https://www.youtube.com/embed/YOUR_VIDEO_ID" 
+          title="Special Birthday Video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      -->
+
+      <!-- METHOD 3: VIDEO URL (UNCOMMENT TO USE)
+      <div class="video-player-wrapper">
+        <video controls>
+          <source src="YOUR_VIDEO_URL" type="video/mp4">
+          Your browser does not support the video tag. Please use a modern browser.
+        </video>
+      </div>
+      -->
+
+      <!-- Video Setup Instructions -->
+      <div class="video-instructions">
+        <h2 class="instruction-title">📝 How to Add Your Video</h2>
+        
+        <p class="instruction-text"><strong>Choose one method below:</strong></p>
+
+        <p class="instruction-text"><strong>✓ Method 1: Local Video File (Easiest & Recommended)</strong></p>
+        <p class="instruction-text">1. Save your video as MP4 format (e.g., "birthday.mp4")</p>
+        <p class="instruction-text">2. Place the video file in the same folder as this HTML file</p>
+        <p class="instruction-text">3. In the code above, replace "YOUR_VIDEO.mp4" with your filename</p>
+        <div class="instruction-code">
+          &lt;source src="YOUR_VIDEO.mp4" type="video/mp4"&gt;
+        </div>
+
+        <p class="instruction-text"><strong>✓ Method 2: YouTube Video</strong></p>
+        <p class="instruction-text">1. Find your video on YouTube</p>
+        <p class="instruction-text">2. Copy the video ID from the URL (after v=)</p>
+        <p class="instruction-text">3. Uncomment Option 2 code above and replace YOUR_VIDEO_ID</p>
+        <div class="instruction-code">
+          https://www.youtube.com/embed/YOUR_VIDEO_ID
+        </div>
+
+        <p class="instruction-text"><strong>✓ Method 3: Direct Video URL</strong></p>
+        <p class="instruction-text">1. Get a direct link to your video file</p>
+        <p class="instruction-text">2. Uncomment Option 3 code above and paste the URL</p>
+        <div class="instruction-code">
+          &lt;source src="YOUR_VIDEO_URL" type="video/mp4"&gt;
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="action-btn secondary" onclick="goBackToCelebration()">
+          ← Back to Celebration
+        </button>
+        <button class="action-btn" onclick="celebrateMore()">
+          🎉 Celebrate More
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================
+     MUSIC PLAYER
+     ============================================ -->
+<audio id="bg-music" loop autoplay style="display:none;">
+  <!-- embedded 0.1s 440Hz sine WAV fallback; guaranteed to exist -->
+  <source src="data:audio/wav;base64,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\" type=\"audio/wav\">\n</audio>
+
+
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
+<script>
+// ── Page Navigation ──
+function goToSurprise() {
+  document.getElementById('celebrationPage').classList.remove('active');
+  document.getElementById('videoPage').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function goBackToCelebration() {
+  document.getElementById('videoPage').classList.remove('active');
+  document.getElementById('celebrationPage').classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ── Custom Cursor ──
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', (e) => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});
+
+// ── Floating Hearts (Main Page) ──
+(function spawnHearts() {
+  const container = document.getElementById('hearts-bg');
+  const emojis = ['❤️','💕','💗','💖','💓','🌸','✨'];
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart-float';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+    h.style.animationDuration = (Math.random() * 8 + 7) + 's';
+    h.style.animationDelay = (Math.random() * 8) + 's';
+    container.appendChild(h);
+  }
+})();
+
+// ── Floating Hearts (Video Page) ──
+(function spawnHeartsVideo() {
+  const container = document.getElementById('hearts-bg-video');
+  const emojis = ['❤️','💕','💗','💖','💓','🌸','✨'];
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart-float';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (Math.random() * 1.5 + 0.8) + 'rem';
+    h.style.animationDuration = (Math.random() * 8 + 7) + 's';
+    h.style.animationDelay = (Math.random() * 8) + 's';
+    container.appendChild(h);
+  }
+})();
+
+// ── Quotes Carousel ──
+(function initCarousel() {
+  const slides = document.querySelectorAll('.quote-slide');
+  const dotsEl = document.getElementById('dots');
+  let current = 0;
+  let timer;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    document.querySelectorAll('.dot')[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    document.querySelectorAll('.dot')[current].classList.add('active');
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 4500);
+  }
+
+  document.getElementById('prev-btn').onclick = () => goTo(current - 1);
+  document.getElementById('next-btn').onclick = () => goTo(current + 1);
+  resetTimer();
+})();
+
+// ── Yes / No Buttons ──
+function handleYes() {
+  launchHearts();
+  setTimeout(() => {
+    document.getElementById('yes-popup').classList.add('show');
+  }, 600);
+}
+
+function closeYesPopup() {
+  document.getElementById('yes-popup').classList.remove('show');
+}
+
+function moveNoBtn() {
+  const btn = document.getElementById('no-btn');
+  const maxX = window.innerWidth - btn.offsetWidth - 20;
+  const maxY = window.innerHeight - btn.offsetHeight - 20;
+  const randX = Math.random() * maxX;
+  const randY = Math.random() * maxY;
+  btn.style.position = 'fixed';
+  btn.style.left = randX + 'px';
+  btn.style.top = randY + 'px';
+  btn.style.zIndex = '500';
+}
+
+function launchHearts() {
+  const el = document.getElementById('heart-explosion');
+  el.style.display = 'block';
+  const emojis = ['💖','💗','💕','❤️','💓','🌸','✨'];
+  for (let i = 0; i < 40; i++) {
+    const h = document.createElement('span');
+    h.className = 'exp-heart';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = '50vw';
+    h.style.top = '50vh';
+    const tx = (Math.random() - 0.5) * 200 + 'vw';
+    const ty = (Math.random() - 0.5) * 200 + 'vh';
+    h.style.setProperty('--tx', tx);
+    h.style.setProperty('--ty', ty);
+    h.style.animationDuration = (Math.random() * 0.8 + 0.8) + 's';
+    h.style.animationDelay = (Math.random() * 0.4) + 's';
+    el.appendChild(h);
+  }
+  setTimeout(() => { 
+    el.style.display = 'none'; 
+    el.innerHTML = ''; 
+  }, 2000);
+}
+
+// ── Music Auto-play ──
+const audio = document.getElementById('bg-music');
+
+// ── audio initialization & auto-play ──
+(function initAudio() {
+  const srcEl = audio.querySelector('source');
+  if (srcEl && srcEl.getAttribute('src')) {
+    audio.src = srcEl.getAttribute('src');
+    console.log('Initializing background music:', audio.src);
+    audio.load();
+    // Auto-play the audio as soon as it loads
+    audio.play().catch((err) => {
+      console.log('Auto-play failed (may need user interaction):', err);
+    });
+  } else {
+    console.warn('No <source> element found or src attribute missing');
+  }
+
+  // log if any loading errors occur
+  audio.addEventListener('error', () => {
+    console.error('Audio element encountered an error', audio.error);
+  });
+})();
+
+// ── Typing Effect ──
+(function initTyping() {
+  const letter = `From the very first moment I saw you, I knew — you were someone extraordinary. Someone who would change everything.
+
+You make ordinary days feel like poetry. You turn simple moments into memories I replay in my mind late at night. The way you laugh, the way you care, the way you make me feel seen and loved — it is the most beautiful thing I have ever experienced.
+
+On your birthday, I want you to know that you are not just loved — you are treasured. You deserve every sunset, every bloom, every beautiful thing this world has to offer.
+
+Thank you for being you. Thank you for being mine.`;
+
+  const textEl = document.getElementById('letter-text');
+  const cursor = document.getElementById('typing-cursor');
+  const sign = document.getElementById('letter-sign');
+  let index = 0;
+  let started = false;
+
+  function type() {
+    if (index < letter.length) {
+      textEl.innerHTML += letter[index] === '\n' ? '<br>' : letter[index];
+      index++;
+      setTimeout(type, index < 5 ? 100 : 28 + Math.random() * 30);
+    } else {
+      cursor.style.display = 'none';
+      sign.style.opacity = '1';
+    }
+  }
+
+  // Start when section comes into view
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      setTimeout(type, 600);
+    }
+  }, { threshold: 0.3 });
+
+  obs.observe(document.getElementById('letter'));
+})();
+
+// ── Envelope & Letter ──
+document.getElementById('envelope').addEventListener('click', function() {
+  this.classList.add('open');
+  setTimeout(() => {
+    document.getElementById('letterPopup').classList.add('active');
+  }, 400);
+});
+
+function closeLetter() {
+  const popup = document.getElementById('letterPopup');
+  popup.classList.remove('active');
+  setTimeout(() => {
+    document.getElementById('envelope').classList.remove('open');
+  }, 300);
+}
+
+// ── Finale Reveal + Confetti ──
+(function initFinale() {
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      document.getElementById('finale-title').classList.add('reveal');
+      document.getElementById('finale-msg').classList.add('reveal');
+      launchConfetti();
+      spawnFinaleHearts();
+      obs.disconnect();
+    }
+  }, { threshold: 0.3 });
+
+  obs.observe(document.getElementById('finale'));
+
+  function launchConfetti() {
+    const colors = ['#f4a7b9','#e05c7f','#c0395c','#d8b4e2','#fce4ec','#d4a853','#fff'];
+    for (let i = 0; i < 120; i++) {
+      setTimeout(() => {
+        const c = document.createElement('div');
+        c.className = 'confetti-piece';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.top = '-20px';
+        c.style.background = colors[Math.floor(Math.random() * colors.length)];
+        c.style.width = (Math.random() * 8 + 6) + 'px';
+        c.style.height = (Math.random() * 8 + 6) + 'px';
+        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+        c.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 5000);
+      }, i * 30);
+    }
+  }
+
+  function spawnFinaleHearts() {
+    const container = document.getElementById('finale');
+    const emojis = ['💖','💕','❤️','🌸','✨','💗'];
+    for (let i = 0; i < 12; i++) {
+      const h = document.createElement('span');
+      h.className = 'finale-heart';
+      h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      h.style.left = Math.random() * 100 + '%';
+      h.style.bottom = '0';
+      h.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+      h.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      h.style.animationDelay = (Math.random() * 3) + 's';
+      container.appendChild(h);
+    }
+  }
+})();
+
+// ── Confetti (Video Page) ──
+function celebrateMore() {
+  launchConfetti();
+}
+
+function launchConfetti() {
+  const colors = ['#f4a7b9','#e05c7f','#c0395c','#d8b4e2','#fce4ec','#d4a853','#fff'];
+  for (let i = 0; i < 120; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.top = '-20px';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width = (Math.random() * 8 + 6) + 'px';
+      c.style.height = (Math.random() * 8 + 6) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.animationDuration = (Math.random() * 2.5 + 2) + 's';
+      document.body.appendChild(c);
+      setTimeout(() => c.remove(), 5000);
+    }, i * 30);
+  }
+}
+
+// ── Scroll to Quotes ──
+function scrollToQuotes() {
+  document.getElementById('quotes').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
