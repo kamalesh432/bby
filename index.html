@@ -42,20 +42,9 @@ body {
   cursor: default;
 }
 
-/* Custom Cursor */
+/* Custom Cursor - DISABLED */
 .cursor {
-  width: 20px; 
-  height: 20px;
-  background: var(--deep-pink);
-  border-radius: 50%;
-  position: fixed; 
-  top: 0; 
-  left: 0;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
-  mix-blend-mode: multiply;
+  display: none;
 }
 
 /* Page Management */
@@ -419,11 +408,16 @@ section {
   color: var(--rose);
   border: 2px solid var(--rose);
   position: relative;
+  touch-action: manipulation;
 }
 
 #no-btn:hover { 
   border-color: var(--deep-pink);
   color: var(--deep-pink);
+}
+
+#no-btn:active {
+  transform: scale(0.98);
 }
 
 /* ============================================
@@ -508,6 +502,85 @@ section {
 .popup-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 25px var(--shadow);
+}
+
+/* Angry Popup Styles */
+.popup-content.angry {
+  background: linear-gradient(135deg, #ffe6e6 0%, #fff0f5 100%);
+  border: 3px solid var(--rose);
+  animation: angryShake 0.6s cubic-bezier(0.36, 0, 0.66, -0.56);
+}
+
+@keyframes angryShake {
+  0% { transform: translateX(0) rotate(0deg) scale(1); }
+  5% { transform: translateX(-20px) rotate(-2deg) scale(1.02); }
+  10% { transform: translateX(20px) rotate(2deg) scale(1.02); }
+  15% { transform: translateX(-20px) rotate(-2deg) scale(1.02); }
+  20% { transform: translateX(20px) rotate(2deg) scale(1.02); }
+  25% { transform: translateX(-15px) rotate(-1.5deg) scale(1.01); }
+  30% { transform: translateX(15px) rotate(1.5deg) scale(1.01); }
+  35% { transform: translateX(-10px) rotate(-1deg) scale(1.01); }
+  40% { transform: translateX(10px) rotate(1deg) scale(1.01); }
+  45% { transform: translateX(-5px) rotate(-0.5deg) scale(1); }
+  50% { transform: translateX(5px) rotate(0.5deg) scale(1); }
+  100% { transform: translateX(0) rotate(0deg) scale(1); }
+}
+
+.popup-title.angry {
+  color: var(--rose);
+  font-size: 2.2rem;
+  animation: angryPulse 0.4s ease;
+  text-shadow: 0 0 20px rgba(192, 57, 92, 0.4);
+  font-family: 'Great Vibes', cursive;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  transform: rotate(-2deg);
+}
+
+@keyframes angryPulse {
+  0% { transform: scale(1) rotate(-3deg); }
+  25% { transform: scale(1.15) rotate(-2deg); }
+  50% { transform: scale(1.2) rotate(2deg); }
+  75% { transform: scale(1.1) rotate(-1deg); }
+  100% { transform: scale(1) rotate(-2deg); }
+}
+
+.angry-btn {
+  background: var(--rose);
+  animation: angryBtnPulse 0.5s ease;
+}
+
+.angry-btn:hover {
+  background: var(--deep-pink);
+  box-shadow: 0 0 30px rgba(192, 57, 92, 0.6);
+}
+
+@keyframes angryBtnPulse {
+  0% { transform: scale(0.7) rotate(-5deg); }
+  25% { transform: scale(1.1) rotate(0deg); }
+  50% { transform: scale(1.15) rotate(5deg); }
+  75% { transform: scale(1.05) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+/* NO POPUP (ANGRY) */
+#no-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+#no-popup.show {
+  display: flex;
+  animation: popupFadeIn 0.4s ease;
 }
 
 /* ============================================
@@ -1285,7 +1358,7 @@ section {
     
     <div class="yesno-buttons">
       <button class="yesno-btn" id="yes-btn" onclick="handleYes()">YES ❤️</button>
-      <button class="yesno-btn" id="no-btn" onmouseover="moveNoBtn()">NO</button>
+      <button class="yesno-btn" id="no-btn" onclick="handleNo()">NO</button>
     </div>
   </section>
 
@@ -1295,6 +1368,15 @@ section {
       <h2 class="popup-title">I Love You So Much! 💕</h2>
       <p class="popup-text">You just made me the happiest person alive! I can't wait to spend forever with you.</p>
       <button class="popup-btn" onclick="closeYesPopup()">Continue</button>
+    </div>
+  </div>
+
+  <!-- NO POPUP (ANGRY) -->
+  <div id="no-popup">
+    <div class="popup-content angry">
+      <h2 class="popup-title angry">U CAN'T SAY NO TO MEEEE 😤</h2>
+      <p class="popup-text">Don't even try! I'm not accepting that answer!</p>
+      <button class="popup-btn angry-btn" onclick="closeNoPopup()">Okay, Okay... YES!</button>
     </div>
   </div>
 
@@ -1461,10 +1543,12 @@ section {
 <!-- ============================================
      MUSIC PLAYER
      ============================================ -->
-<audio id="bg-music" loop autoplay style="display:none;">
-  <!-- embedded 0.1s 440Hz sine WAV fallback; guaranteed to exist -->
-  <source src="data:audio/wav;base64,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\" type=\"audio/wav\">\n</audio>
-
+<div class="music-player" id="music-toggle">♪</div>
+<audio id="bg-music" loop style="display:none;">
+  <!-- INSTRUCTION: Add your music file here
+       <source src="your-music-file.mp3" type="audio/mpeg">
+  -->
+</audio>
 
 <!-- ============================================
      JAVASCRIPT
@@ -1568,16 +1652,15 @@ function closeYesPopup() {
   document.getElementById('yes-popup').classList.remove('show');
 }
 
-function moveNoBtn() {
-  const btn = document.getElementById('no-btn');
-  const maxX = window.innerWidth - btn.offsetWidth - 20;
-  const maxY = window.innerHeight - btn.offsetHeight - 20;
-  const randX = Math.random() * maxX;
-  const randY = Math.random() * maxY;
-  btn.style.position = 'fixed';
-  btn.style.left = randX + 'px';
-  btn.style.top = randY + 'px';
-  btn.style.zIndex = '500';
+function handleNo() {
+  setTimeout(() => {
+    document.getElementById('no-popup').classList.add('show');
+  }, 100);
+}
+
+function closeNoPopup() {
+  document.getElementById('no-popup').classList.remove('show');
+  handleYes();
 }
 
 function launchHearts() {
@@ -1604,29 +1687,28 @@ function launchHearts() {
   }, 2000);
 }
 
-// ── Music Auto-play ──
+// ── Music Toggle ──
+const musicBtn = document.getElementById('music-toggle');
 const audio = document.getElementById('bg-music');
 
-// ── audio initialization & auto-play ──
-(function initAudio() {
-  const srcEl = audio.querySelector('source');
-  if (srcEl && srcEl.getAttribute('src')) {
-    audio.src = srcEl.getAttribute('src');
-    console.log('Initializing background music:', audio.src);
-    audio.load();
-    // Auto-play the audio as soon as it loads
-    audio.play().catch((err) => {
-      console.log('Auto-play failed (may need user interaction):', err);
-    });
-  } else {
-    console.warn('No <source> element found or src attribute missing');
+musicBtn.addEventListener('click', () => {
+  if (!audio.src) {
+    musicBtn.title = 'Add a music file in HTML for audio playback';
+    musicBtn.textContent = '🎵';
+    return;
   }
-
-  // log if any loading errors occur
-  audio.addEventListener('error', () => {
-    console.error('Audio element encountered an error', audio.error);
-  });
-})();
+  if (audio.paused) {
+    audio.play().catch(() => {
+      console.log('Audio playback failed - ensure CORS is enabled');
+    });
+    musicBtn.classList.add('playing');
+    musicBtn.textContent = '⏸';
+  } else {
+    audio.pause();
+    musicBtn.classList.remove('playing');
+    musicBtn.textContent = '♪';
+  }
+});
 
 // ── Typing Effect ──
 (function initTyping() {
