@@ -1838,10 +1838,9 @@ section {
           </div>
 
           <!-- Audio Element -->
-          <audio id="surpriseAudio">
-            <!-- INSTRUCTION: Replace with your audio file
-                 <source src="your-audio-file.mp3" type="audio/mpeg">
-            -->
+          <audio id="surpriseAudio" preload="auto">
+            <source src="your-audio-file.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
           </audio>
         </div>
 
@@ -2264,17 +2263,22 @@ function scrollToQuotes() {
 
   if (!audio) return;
 
+  // Check if audio source exists
+  const audioSource = audio.querySelector('source');
+  if (!audioSource || !audioSource.src) {
+    console.error('Audio source not found. Please check your audio file path.');
+    return;
+  }
+
   // Play button
   playBtn.addEventListener('click', () => {
-    if (!audio.src) {
-      playBtn.title = 'Please add an audio file to play';
-      return;
-    }
-    audio.play().catch(() => {
-      console.log('Audio playback failed - ensure CORS is enabled');
+    audio.play().then(() => {
+      playBtn.style.display = 'none';
+      pauseBtn.style.display = 'flex';
+    }).catch((error) => {
+      console.error('Playback failed:', error);
+      alert('Unable to play audio. Make sure the file path is correct and the file exists in the same folder as index.html');
     });
-    playBtn.style.display = 'none';
-    pauseBtn.style.display = 'flex';
   });
 
   // Pause button
@@ -2306,6 +2310,13 @@ function scrollToQuotes() {
   // Update duration when metadata loads
   audio.addEventListener('loadedmetadata', () => {
     durationEl.textContent = formatTime(audio.duration);
+    console.log('Audio loaded successfully. Duration: ' + formatTime(audio.duration));
+  });
+
+  // Handle loading errors
+  audio.addEventListener('error', (e) => {
+    console.error('Audio loading error:', e);
+    alert('Error loading audio file. Please verify:\n1. File is named "your-audio-file.mp3"\n2. File is in the same folder as index.html\n3. File path is correct');
   });
 
   // Allow seeking
@@ -2328,6 +2339,9 @@ function scrollToQuotes() {
     const secs = Math.floor(seconds % 60);
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   }
+
+  // Log for debugging
+  console.log('Audio player initialized. Source:', audioSource.src);
 })();
 
 </script>
